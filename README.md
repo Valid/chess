@@ -18,6 +18,46 @@ This project serves as a code sample. The specifications are as follows:
 
 #### Should be fun. Here goes!
 
+# Tech used
+
+* SCSS CSS Preprocessor
+* CSS Grid for the chessboard
+* BEM Methodology
+* Redux for passing state amongst components
+
+# Product Considerations
+
+### Product should work across browsers
+Tested across any browser that has > 2% usage for target demo
+
+### Product should work across devices
+Mobile browsing has overtaken desktops, and the trend isn't stopping. This app should work when viewed on any modern device.
+
+# Code Considerations
+
+### Code should be modular
+Devs should be able to add new pieces easily as well as include the board using a separate configuration with the same codebase.
+
+### Code should be clean, readable, and standardized
+Spaghetti code is no fun. While opinions differ on specific implementations, the most important thing is that all code follows the same guidelines! This also means that when there are multiple ways of doing something with roughly the same performance, the _most readable_ should be preferred.
+
+For this project, all code is linted with `eslint` using the Airbnb base with the following modifications:
+1. Allow .js to include JSX code (instead of only .jsx)
+
+### Code shouldn't break
+It's easy to tweak one area of a project and break another, which makes automated testing very important.
+
+Tests are integrated into this project with Jest and Enzyme.
+
+Start the test runner with:
+
+### `npm test` or `yarn test`
+
+
+# Thoughts & Notes
+
+The CSS Grid is nice and makes the code cleaner, but the styling is too specific, so different board sizes will cause the 'black' tiles to be misaligned. In addition, the width of the rows are set in the CSS, which is suboptimal. The best solution would be to separate each row into a parent element, then you can :odd and :even on those to their children tiles to ensure a consistent grid. Will likely implement later.
+
 # Online preview
 
 For convenience, you can see the latest version online at:
@@ -37,11 +77,3 @@ In the project directory, you can start the project by running:
 ### `npm start` or `yarn start`
 
 This should open a browser. If not, navigate to [http://localhost:3000](http://localhost:3000) to view it.
-
-# Tests
-
-Tests are integrated with Jest and Enzyme.
-
-Start the rest runner with
-
-### `npm test` or `yarn test`
