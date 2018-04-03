@@ -1,0 +1,15 @@
+.App {
+  background-color: #d0dcdb;
+  display: flex;
+  min-height: 100vh;
+}
+.chessboard {
+  border: 0.5rem solid #fff;
+  border-radius: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  margin: auto;
+  max-width: 40rem;
+  width: 100%;
+}

@@ -1,0 +1,16 @@
+.chessboard {
+  &__tile {
+    background-color: #f8f3ea;
+    text-indent: -999em;
+    &:after {
+      content: '';
+      display: block;
+      padding-top: 100%;
+    }
+    @each $offset in 2 4 6 8 9 11 13 15 {
+      &:nth-child(16n + #{$offset}) {
+        background-color: #ecdfcb;
+      }
+    }
+  }
+}
