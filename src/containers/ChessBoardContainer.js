@@ -16,6 +16,8 @@ class ChessBoardContainer extends Component {
         bishop: [0, 5],
       },
       active: null,
+      fail: null,
+      succeed: null,
     };
 
     this.selectTile = this.selectTile.bind(this);
@@ -31,11 +33,13 @@ class ChessBoardContainer extends Component {
     if (active) {
       // Check if move is valid
       if (!isValidMove(active, coords)) {
+        this.setState({ fail: coords });
         return;
       }
 
       // Check if space is occupied by another piece
       if (Object.entries(pieces).find((pieceCoords) => isEqual(pieceCoords[1], coords))) {
+        this.setState({ fail: coords });
         return;
       }
 
@@ -47,6 +51,7 @@ class ChessBoardContainer extends Component {
           // Then updates the current piece with new coords
           [active[0]]: coords,
         },
+        succeed: coords,
       }));
     }
 

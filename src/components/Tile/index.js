@@ -4,7 +4,7 @@ import ClassNames from 'classnames';
 import Piece from '../Piece';
 import './Tile.css';
 
-const Tile = ({ dark, validSpace, coords, piece, active, showHints, selectTile }) => {
+const Tile = ({ dark, validSpace, coords, piece, active, showHints, fail, succeed, selectTile }) => {
   const thisPiece = piece || null;
 
   // This colorizes the gameboard when a piece is selected
@@ -16,6 +16,8 @@ const Tile = ({ dark, validSpace, coords, piece, active, showHints, selectTile }
         'chessboard__tile--active': !!active,
         'chessboard__tile--valid': showHints && validSpace,
         'chessboard__tile--invalid': showHints && !validSpace,
+        'chessboard__tile--fail': fail,
+        'chessboard__tile--succeed': succeed,
       })}
       onClick={() => selectTile(thisPiece, coords)}
     >
@@ -31,6 +33,8 @@ Tile.defaultProps = {
   validSpace: false,
   piece: null,
   active: null,
+  fail: false,
+  succeed: false,
   showHints: false,
 };
 
@@ -41,5 +45,7 @@ Tile.propTypes = {
   piece: arrayOf(oneOfType([string.isRequired, arrayOf(number.isRequired)])),
   active: arrayOf(oneOfType([string.isRequired, arrayOf(number.isRequired)])),
   showHints: bool,
+  fail: bool,
+  succeed: bool,
   selectTile: func.isRequired,
 };

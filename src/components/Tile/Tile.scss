@@ -32,10 +32,39 @@
         background-color: rgba(0, 255, 0, 0.15);
       }
     }
-    // &--invalid {
-    //   &:before {
-    //     background-color: rgba(255, 0, 0, 0.15);
-    //   }
-    // }
+    &--invalid {
+      &:before {
+        background-color: rgba(255, 0, 0, 0.15);
+      }
+    }
+    &--fail {
+      &:before {
+        animation: 1s ease 1 fail;
+      }
+    }
+    &--succeed {
+      &:before {
+        animation: 1s ease 1 succeed;
+      }
+    }
+  }
+}
+
+@keyframes fail {
+  from {
+    background-color: rgba(255, 0, 0, 0.5);
+  }
+  to {
+    background-color: rgba(255, 0, 0, 0);
+  }
+}
+
+/* animation to flash for successful move */
+@keyframes succeed {
+  from {
+    background-color: rgba(0, 255, 0, 0.5);
+  }
+  to {
+    background-color: rgba(0, 255, 0, 0);
   }
 }

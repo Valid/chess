@@ -6,13 +6,13 @@ import { isValidMove } from '../Piece';
 
 class ChessBoard extends Component {
   render() {
-    const { active, pieces, selectTile } = this.props;
+    const { active, pieces, fail, succeed, selectTile } = this.props;
     // My little easter egg!
     const SHOW_HINTS = false;
 
     // The standard chessboard is 8 x 8
     const BOARD_SIZE = 8;
-    // We start by creating an blank array with 64 tiles
+    // We start by creating a blank array with 64 tiles
     const gameScaffolding = [...Array(BOARD_SIZE * BOARD_SIZE)];
     return (
       <div className="chessboard">
@@ -33,6 +33,8 @@ class ChessBoard extends Component {
               active={isActive ? active : null}
               validSpace={!!active && isValidMove(active, coords)}
               showHints={SHOW_HINTS && !!active}
+              fail={isEqual(fail, coords)}
+              succeed={isEqual(succeed, coords)}
               selectTile={selectTile}
             />
           );
@@ -43,11 +45,15 @@ class ChessBoard extends Component {
 }
 
 ChessBoard.defaultProps = {
+  fail: null,
+  succeed: null,
   active: null,
   pieces: {},
 };
 
 ChessBoard.propTypes = {
+  fail: arrayOf(number),
+  succeed: arrayOf(number),
   active: arrayOf(oneOfType([string.isRequired, arrayOf(number.isRequired)])),
   pieces: shape({}),
   selectTile: func.isRequired,
