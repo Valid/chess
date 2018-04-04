@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import isEqual from 'lodash.isequal';
+import styled from 'styled-components';
 import { shape, arrayOf, oneOfType, string, number, func } from 'prop-types';
 import Tile from '../Tile';
 import { isValidMove } from '../Piece';
 
+// My little easter egg!
+const SHOW_HINTS = false;
+
+// The standard chessboard is 8 x 8
+const BOARD_SIZE = 8;
+
 class ChessBoard extends Component {
   render() {
     const { active, pieces, fail, succeed, selectTile } = this.props;
-    // My little easter egg!
-    const SHOW_HINTS = false;
-
-    // The standard chessboard is 8 x 8
-    const BOARD_SIZE = 8;
     // We start by creating a blank array with 64 tiles
     const gameScaffolding = [...Array(BOARD_SIZE * BOARD_SIZE)];
+
     return (
-      <div className="chessboard">
+      <StyledChessBoard>
         {gameScaffolding.map((tile, index) => {
           // Store the [x, y] coords for each tile
           const coords = [Math.floor(index / BOARD_SIZE), index % BOARD_SIZE];
@@ -39,10 +42,22 @@ class ChessBoard extends Component {
             />
           );
         })}
-      </div>
+      </StyledChessBoard>
     );
   }
 }
+
+// Define chessboard styles
+const StyledChessBoard = styled.div`
+  border: 0.5rem solid #fff;
+  border-radius: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(${BOARD_SIZE}, 1fr);
+  grid-template-rows: repeat(${BOARD_SIZE}, 1fr);
+  margin: auto;
+  max-width: 40rem;
+  width: 100%;
+`;
 
 ChessBoard.defaultProps = {
   fail: null,

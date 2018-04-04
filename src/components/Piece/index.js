@@ -1,9 +1,8 @@
 import React from 'react';
+import styled from 'styled-components';
 import { string } from 'prop-types';
 import Knight from './Knight';
 import Bishop from './Bishop';
-
-import './Piece.css';
 
 export const isValidMove = (piece, endCoords) => {
   // It would be neat to have these in the individual piece components
@@ -49,10 +48,21 @@ const RenderPiece = (type) => {
 };
 
 const Piece = ({ type }) => (
-  <div className="chessboard__piece">
+  <StyledPiece>
     <RenderPiece type={type} />
-  </div>
+  </StyledPiece>
 );
+
+// Define Piece styles
+const StyledPiece = styled.div`
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+`;
 
 Piece.propTypes = {
   type: string.isRequired,

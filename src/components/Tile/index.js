@@ -1,32 +1,106 @@
 import React from 'react';
+import styled, { css, keyframes } from 'styled-components';
 import { func, bool, arrayOf, string, number, oneOfType } from 'prop-types';
-import ClassNames from 'classnames';
 import Piece from '../Piece';
-import './Tile.css';
 
 const Tile = ({ dark, validSpace, coords, piece, active, showHints, fail, succeed, selectTile }) => {
   const thisPiece = piece || null;
 
   // This colorizes the gameboard when a piece is selected
   return (
-    <div
-      className={ClassNames({
-        chessboard__tile: true,
-        'chessboard__tile--dark': dark,
-        'chessboard__tile--active': !!active,
-        'chessboard__tile--valid': showHints && validSpace,
-        'chessboard__tile--invalid': showHints && !validSpace,
-        'chessboard__tile--fail': fail,
-        'chessboard__tile--succeed': succeed,
-      })}
+    <StyledTile
+      dark={dark}
+      active={!!active}
+      valid={showHints && validSpace}
+      invalid={showHints && !validSpace}
+      fail={fail}
+      succeed={succeed}
       onClick={() => selectTile(thisPiece, coords)}
     >
       {piece && <Piece type={piece[0]} />}
-    </div>
+    </StyledTile>
   );
 };
 
 export default Tile;
+
+
+// Define animations for successful/unsuccessful piece moves
+const failIndicator = keyframes`
+  from {
+    background-color: rgba(255, 0, 0, 0.5);
+  }
+  to {
+    background-color: rgba(255, 0, 0, 0);
+  }
+`;
+
+const successIndicator = keyframes`
+  from {
+    background-color: rgba(0, 255, 0, 0.5);
+  }
+  to {
+    background-color: rgba(0, 255, 0, 0);
+  }
+`;
+
+// Define Tile styles
+const StyledTile = styled.div`
+  background-color: #f8f3ea;
+  box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0);
+  position: relative;
+  transition: box-shadow 250ms ease;
+  &:after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+  &:before {
+    background-color: rgba(0, 0, 0, 0);
+    bottom: 0;
+    content: '';
+    position: absolute;
+    top: 0;
+    transition: background-color 250ms ease;
+    width: 100%;
+  }
+  ${(props) =>
+    !props.active &&
+    css`
+      &:hover {
+        box-shadow: inset 0 0 1rem 0 rgba(0, 0, 0, 0.1);
+      }
+    `} ${(props) => props.dark && 'background-color: #ecdfcb'};
+  ${(props) => props.active && 'box-shadow: inset 0 0 1rem 0 rgba(0, 0, 0, 0.25)'};
+  ${(props) =>
+    props.valid &&
+    css`
+      &:before {
+        background-color: rgba(0, 255, 0, 0.15);
+      }
+    `};
+  ${(props) =>
+    props.invalid &&
+    css`
+      &:before {
+        background-color: rgba(255, 0, 0, 0.15);
+      }
+    `};
+  ${(props) =>
+    props.fail &&
+    css`
+      &:before {
+        animation: ${failIndicator} 1s ease 1;
+      }
+    `};
+  ${(props) =>
+    props.succeed &&
+    css`
+      &:before {
+        animation: ${successIndicator} 1s ease 1;
+      }
+    `};
+`;
 
 Tile.defaultProps = {
   dark: false,

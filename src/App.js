@@ -1,14 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 import ChessboardContainer from './containers/ChessBoardContainer';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <ChessboardContainer />
-      </div>
-    );
-  }
-}
+const App = () => (
+  <StyledGame>
+    <ChessboardContainer />
+  </StyledGame>
+);
+
+// Define game styles
+const StyledGame = styled.div`
+  background-color: #d0dcdb;
+  display: flex;
+  min-height: 100vh;
+`;
 
 export default App;

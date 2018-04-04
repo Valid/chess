@@ -3,8 +3,6 @@ import isEqual from 'lodash.isequal';
 import ChessBoard from '../components/ChessBoard';
 import { isValidMove } from '../components/Piece';
 
-import './ChessBoard.css';
-
 class ChessBoardContainer extends Component {
   constructor(props) {
     super(props);
@@ -52,6 +50,7 @@ class ChessBoardContainer extends Component {
           [active[0]]: coords,
         },
         succeed: coords,
+        fail: null,
       }));
     }
 
