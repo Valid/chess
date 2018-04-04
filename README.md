@@ -57,7 +57,9 @@ Start the test runner with:
 
 # Thoughts & Notes
 
-The CSS Grid is nice and makes the code cleaner, but the styling is too specific, so different board sizes will cause the 'black' tiles to be misaligned. In addition, the width of the rows are set in the CSS, which is suboptimal. The best solution would be to separate each row into a parent element, then you can :odd and :even on those to their children tiles to ensure a consistent grid. Will likely implement later.
+The CSS Grid is nice and makes the code cleaner, but the styling is too specific, so ~~different board sizes will cause the 'black' tiles to be misaligned.~~ _I fixed this by using a simple modulo operator to correctly colorize the tiles._
+
+In addition, the width of the rows are set in the CSS, which is suboptimal. The best solution would be to separate each row into a parent element, then you can :odd and :even on those to their children tiles to ensure a consistent grid. Will likely implement later.
 
 # Online preview
 

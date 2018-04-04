@@ -18,7 +18,10 @@ class ChessBoard extends Component {
           const piece = Object.entries(pieces).find((pieceCoords) => isEqual(pieceCoords[1], coords));
           // Check if piece is active (for custom styling)
           const isActive = piece && active && isEqual(piece, active);
-          return <Tile coords={coords} key={coords} piece={piece} active={isActive} selectTile={selectTile} />;
+          const dark = coords[0] % 2 !== coords[1] % 2;
+          return (
+            <Tile dark={dark} coords={coords} key={coords} piece={piece} active={isActive} selectTile={selectTile} />
+          );
         })}
       </div>
     );

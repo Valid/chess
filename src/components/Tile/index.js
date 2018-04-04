@@ -4,12 +4,13 @@ import ClassNames from 'classnames';
 import Piece from '../Piece';
 import './Tile.css';
 
-const Tile = ({ coords, piece, active, selectTile }) => {
+const Tile = ({ dark, coords, piece, active, selectTile }) => {
   const thisPiece = piece || null;
   return (
     <div
       className={ClassNames({
         chessboard__tile: true,
+        'chessboard__tile--dark': dark,
         'chessboard__tile--active': active,
       })}
       onClick={() => selectTile(thisPiece, coords)}
@@ -22,11 +23,13 @@ const Tile = ({ coords, piece, active, selectTile }) => {
 export default Tile;
 
 Tile.defaultProps = {
+  dark: false,
   piece: null,
   active: false,
 };
 
 Tile.propTypes = {
+  dark: bool,
   coords: arrayOf(number.isRequired).isRequired,
   piece: arrayOf(oneOfType([string.isRequired, arrayOf(number.isRequired)])),
   active: bool,
