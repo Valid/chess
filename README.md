@@ -23,7 +23,6 @@ This project serves as a code sample. The specifications are as follows:
 * SCSS CSS Preprocessor
 * CSS Grid for the chessboard
 * BEM Methodology
-* Redux for passing state amongst components
 
 # Product Considerations
 
@@ -42,7 +41,9 @@ Devs should be able to add new pieces easily as well as include the board using 
 Spaghetti code is no fun. While opinions differ on specific implementations, the most important thing is that all code follows the same guidelines! This also means that when there are multiple ways of doing something with roughly the same performance, the _most readable_ should be preferred.
 
 For this project, all code is linted with `eslint` using the Airbnb base with the following modifications:
-1. Allow .js to include JSX code (instead of only .jsx)
+1. `react/jsx-filename-extension` to allow .js to include JSX code (instead of .jsx)
+2. `max-len` because I prefer a max-length of 120
+3. `object-curly-newline` because stateless components look better on a single line
 
 ### Code shouldn't break
 It's easy to tweak one area of a project and break another, which makes automated testing very important.
