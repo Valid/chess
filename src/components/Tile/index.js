@@ -24,7 +24,6 @@ const Tile = ({ dark, validSpace, coords, piece, active, showHints, fail, succee
 
 export default Tile;
 
-
 // Define animations for successful/unsuccessful piece moves
 const failIndicator = keyframes`
   from {
@@ -70,7 +69,8 @@ const StyledTile = styled.div`
       &:hover {
         box-shadow: inset 0 0 1rem 0 rgba(0, 0, 0, 0.1);
       }
-    `} ${(props) => props.dark && 'background-color: #ecdfcb'};
+    `};
+  ${(props) => props.dark && 'background-color: #ecdfcb'};
   ${(props) => props.active && 'box-shadow: inset 0 0 1rem 0 rgba(0, 0, 0, 0.25)'};
   ${(props) =>
     props.valid &&
