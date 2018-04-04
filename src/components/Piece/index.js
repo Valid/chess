@@ -29,7 +29,8 @@ export const isValidMove = (piece, endCoords) => {
       const yDelta = Math.abs(startCoords[1] - endCoords[1]);
 
       // The deltas will be identical if movement is diagonal (one down + one right, etc.)
-      return xDelta === yDelta;
+      // Moving to the same square starting on is technically not a legal move, thus the > 0 check
+      return xDelta === yDelta && xDelta > 0;
     }
     default:
       return null;
