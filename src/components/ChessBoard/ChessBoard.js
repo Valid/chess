@@ -35,7 +35,7 @@ class ChessBoard extends Component {
               piece={piece}
               active={isActive ? active : null}
               validSpace={!!active && isValidMove(active, coords)}
-              showHints={SHOW_HINTS && !!active}
+              showHints={SHOW_HINTS}
               fail={isEqual(fail, coords)}
               succeed={isEqual(succeed, coords)}
               selectTile={selectTile}
