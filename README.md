@@ -1,5 +1,5 @@
 # Chess
-A very simple ReactJS-based chess game containing only a bishop and a ~~horse~~ rook.
+A very simple ReactJS-based chess game containing only a bishop and a ~~horse~~ knight.
 
 This project serves as a code sample. The specifications are as follows:
 
