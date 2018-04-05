@@ -13,15 +13,17 @@ const StyledGame = styled.div`
   background-color: #85ded7;
   display: flex;
   min-height: 100vh;
+  padding: 0 1rem;
   position: relative;
   z-index: 1;
   &:after {
-    content: '';
     background-color: #414c52;
+    bottom: 0;
+    content: '';
     display: block;
     height: 50%;
+    left: 0;
     position: absolute;
-    bottom: 0;
     width: 100%;
     z-index: -1;
   }
