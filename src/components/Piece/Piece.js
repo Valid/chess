@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { string } from 'prop-types';
-import Knight from './Knight';
-import Bishop from './Bishop';
 
 export const isValidMove = (piece, endCoords) => {
   // It would be neat to have these in the individual piece components
@@ -36,20 +34,9 @@ export const isValidMove = (piece, endCoords) => {
   }
 };
 
-const RenderPiece = (type) => {
-  switch (type.type) {
-    case 'knight':
-      return <Knight />;
-    case 'bishop':
-      return <Bishop />;
-    default:
-      return null;
-  }
-};
-
 const Piece = ({ type }) => (
   <StyledPiece>
-    <RenderPiece type={type} />
+    <StyledImg src={`/images/chess-pieces/${type}.svg`} alt={type} />
   </StyledPiece>
 );
 
@@ -62,6 +49,12 @@ const StyledPiece = styled.div`
   justify-content: center;
   position: absolute;
   width: 100%;
+`;
+
+// Define image styles
+const StyledImg = styled.img`
+  max-width: 80%;
+  max-height: 80%;
 `;
 
 Piece.propTypes = {

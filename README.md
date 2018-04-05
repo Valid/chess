@@ -83,3 +83,8 @@ In the project directory, you can start the project by running:
 ### `npm start` or `yarn start`
 
 This should open a browser. If not, navigate to [http://localhost:3000](http://localhost:3000) to view it.
+
+
+#### Icons
+
+Icons courtesy of `Those Icons` CC 3.0 BY
