@@ -10,9 +10,21 @@ const App = () => (
 
 // Define game styles
 const StyledGame = styled.div`
-  background-color: #d0dcdb;
+  background-color: #85ded7;
   display: flex;
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
+  &:after {
+    content: '';
+    background-color: #414c52;
+    display: block;
+    height: 50%;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+  }
 `;
 
 export default App;
