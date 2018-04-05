@@ -52,13 +52,16 @@ class ChessBoardContainer extends Component {
         succeed: coords,
         fail: null,
       }));
+    } else {
+      // Not active, reset success status
+      this.setState({
+        succeed: null,
+      });
     }
 
-    // If the user clicked on a new piece, mark it as active and clear success/fail
+    // If new piece, set as active, otherwise clear active piece
     this.setState({
       active: piece,
-      succeed: null,
-      fail: null,
     });
   }
   render() {
