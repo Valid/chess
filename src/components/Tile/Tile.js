@@ -36,10 +36,10 @@ const failIndicator = keyframes`
 
 const successIndicator = keyframes`
   from {
-    background-color: rgba(0, 255, 0, 0.5);
+    background-color: rgba(199, 174, 135, 1);
   }
   to {
-    background-color: rgba(0, 255, 0, 0);
+    background-color: rgba(199, 174, 135, 0);
   }
 `;
 
