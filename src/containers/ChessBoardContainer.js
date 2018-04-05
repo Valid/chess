@@ -54,9 +54,11 @@ class ChessBoardContainer extends Component {
       }));
     }
 
-    // If the user clicked on a new piece, mark it as active
+    // If the user clicked on a new piece, mark it as active and clear success/fail
     this.setState({
       active: piece,
+      succeed: null,
+      fail: null,
     });
   }
   render() {
