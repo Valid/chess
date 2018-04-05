@@ -1,6 +1,6 @@
 /* global describe, it, expect, jest */
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import Tile from './Tile';
 
 const COORDS = [0, 0];
