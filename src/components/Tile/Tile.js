@@ -63,39 +63,32 @@ const StyledTile = styled.div`
     transition: background-color 250ms ease;
     width: 100%;
   }
-  ${(props) =>
-    !props.active &&
-    css`
+  ${(props) => !props.active && css`
       &:hover {
         box-shadow: inset 0 0 1rem 0 rgba(0, 0, 0, 0.1);
       }
     `};
   ${(props) => props.dark && 'background-color: #ecdfcb'};
-  ${(props) => props.active && 'box-shadow: inset 0 0 1rem 0 rgba(0, 0, 0, 0.25)'};
-  ${(props) =>
-    props.valid &&
-    css`
+  ${(props) => props.active && css`
+    background-color: #c7ae87;
+    box-shadow: inset 0 0 1rem 0 rgba(0, 0, 0, 0.5);
+    `};
+  ${(props) => props.valid && css`
       &:before {
         background-color: rgba(0, 255, 0, 0.15);
       }
     `};
-  ${(props) =>
-    props.invalid &&
-    css`
+  ${(props) => props.invalid && css`
       &:before {
         background-color: rgba(255, 0, 0, 0.15);
       }
     `};
-  ${(props) =>
-    props.fail &&
-    css`
+  ${(props) => props.fail && css`
       &:before {
         animation: ${failIndicator} 1s ease 1;
       }
     `};
-  ${(props) =>
-    props.succeed &&
-    css`
+  ${(props) => props.succeed && css`
       &:before {
         animation: ${successIndicator} 1s ease 1;
       }
